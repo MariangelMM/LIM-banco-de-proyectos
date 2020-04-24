@@ -1,5 +1,5 @@
-.fondito {
-  background-image: url(./img/fondo.jpg);
+* {
+  background-color: black;
   background-size: contain;
 }
 
@@ -11,4 +11,15 @@
 
 .fondo {
   background: transparent;
+}
+
+.btnColorTrash {
+  background: transparent;
+  border: none;
+
+  text-align: center;
+}
+
+.width {
+  font-size: 2em;
 }

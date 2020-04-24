@@ -5,7 +5,7 @@ import '../App.css';
 const ReproductorMusica = () => {
 
     const [state, setState] = useState([]);
-    const [index, setIndex] = useState([1]);
+    const [index, setIndex] = useState([3]);
 
     const apiArtist = 'https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=b71047678120f5300ebf4a390e4b3ef1&format=json';
     useEffect(() => {
@@ -17,13 +17,13 @@ const ReproductorMusica = () => {
                         .then(response => response.json())
                 })).then(data => {
                     const dataLabSongs = data.map((elem, i) => {
-                        // console.log(elem)
+                        // console.log(elem.toptracks.track)
                         return {
                             artist: result.artists.artist[i].name,
                             image: result.artists.artist[i].image[4]['#text'],
                             songs: elem.toptracks.track
                                 .filter(elemSong => elemSong['@attr'].rank <= 10)
-                                .map(elemSong => { return { name: elemSong.name, like: elemSong.playcount } })
+                                .map(elemSong => { return { name: elemSong.name, like: elemSong.playcount, url: elemSong.url } })
                                 .sort((a, b) => a.like < b.like),
                         }
                     })
@@ -32,20 +32,31 @@ const ReproductorMusica = () => {
             })
     }, [])
 
+    const search = (event, seeker) => {
+        event.preventDefault();
+        return fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${seeker}&api_key=5c8e2c09c2a2396e6d24a126d15464fc&format=json`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
+
+
+
+
     const next = () => {
         setIndex(index + 1)
     }
 
 
-
     const a = state.map((elem, i) =>
-        < div className="" key={i} >
-            <Artist element={elem} btn={next} />
+        < div className="fondito" key={i} >
+            <Artist element={elem} btn={next} buscar={search} />
         </div >
     )[index]
 
     return (
-        <div >
+        <div className="m-5">
             {a}
         </div>
     )

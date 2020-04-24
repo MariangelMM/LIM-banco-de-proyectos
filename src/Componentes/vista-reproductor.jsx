@@ -1,64 +1,75 @@
-import React from 'react';
-// import { img } from '../img/fondo.jpg';
+import React, { useState } from 'react';
+import img from '../img/imagen.jpg';
 import '../App.css';
 
 const Artist = (props) => {
-    const { artist, image, songs } = props.element;
+    const { artist, songs } = props.element;
+
+    // console.log(songs)
+
+    const [seeker, setSeeker] = useState('');
+
+    const searchArtist = (e) => {
+        setSeeker(e.target.value);
+    };
+
+
 
     return (
 
         <div key={artist} className="d-flex justify-content-center">
             <div className="">
-                <div className="card style">
-                    <img className="card-img-top" src={image} alt='artista' />
-                    <div className="card-body " >
-                        <div className="row ">
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick={() => {
+                <div className="row m-2 justify-content-center">
+                    <input className="form-control col-sm-9 " type="text" onChange={searchArtist} placeholder="escribe aqui" />
+                    <button className="btn btn-outline-danger col-sm-2 ml-3 mb-3" onClick={(event) => { props.buscar(event, seeker) }} type="submit"><i className="fas fa-search"></i></button>
 
-                                }}>
-                                <i className=""></i></button>
-                            <h3 className="">{artist}</h3>
+                </div>
+                <div className="card style">
+                    <img className="card-img-top" src={img} alt='artista' />
+                    <div className="card-body " >
+                        <div className="row justify-content-center">
+                            <button type="button" className="btnColorTrash" onClick={() => { }}>
+                                <i className="fas fa-arrow-left text-white"></i>
+                            </button>
+                            <h3 className="text-white">{artist}</h3>
                             <button
                                 type="button"
-                                className="btn btn-primary"
+                                className="btnColorTrash"
                                 onClick={() => {
                                     props.btn()
                                 }}>
-                                <i className=""></i></button>
+                                <i className="fas fa-arrow-right text-white"></i></button>
                         </div>
-                        <ul className="">
+                        <div className="">
                             {songs.map((song, i) =>
-                                <li key={i} >
-                                    <div className="row m-1" >
-                                        <p>{song.name}</p>
-                                        <button
-                                            id={i}
-                                            type="button"
-                                            className="btn btn-primary m-1"
-                                            onClick={(e) => {
+                                <div className="row" key={i} >
+                                    <p className="col-sm-6 text-white">{song.name}</p>
+                                    <button
+                                        id={i}
+                                        type="button"
+                                        className="btn btnColorTrash col-sm-1 "
+                                        onClick={(e) => {
 
-                                            }}>
-                                            <i id={i} className=""></i></button>
-                                        <button
-                                            id={i}
-                                            type="button"
-                                            className="btn btn-primary m-1"
-                                            onClick={(e) => {
+                                        }}>
+                                        <i className="fas fa-heart text-white"></i>
+                                    </button>
+                                    <button
+                                        id={i}
+                                        type="button"
+                                        className="btnColorTrash col-sm-1"
+                                        onClick={(e) => {
 
-                                            }}>
-                                            <i id={i} className=""></i></button>
-                                        <button type="button" className="btn btn-primary m-1" disabled>{song.like}</button>
-                                    </div>
-                                </li >
+                                        }}>
+                                        <i className="fas fa-thumbs-down text-white "></i>
+                                    </button>
+                                    <button type="button" className="btnColorTrash col-sm-4 text-white" disabled>{song.like}</button>
+                                </div>
                             )}
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
