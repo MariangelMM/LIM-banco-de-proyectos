@@ -28,16 +28,14 @@ const Artist = (props) => {
                     <img className="card-img-top" src={img} alt='artista' />
                     <div className="card-body " >
                         <div className="row justify-content-center">
-                            <button type="button" className="btnColorTrash" onClick={() => { }}>
-                                <i className="fas fa-arrow-left text-white"></i>
-                            </button>
+                            <button type="button" className="btnColorTrash" onClick={(e) => {
+                                props.btnPreview(e)
+                            }}>
+                                <i className="fas fa-arrow-left text-white"></i> </button>
                             <h3 className="text-white">{artist}</h3>
-                            <button
-                                type="button"
-                                className="btnColorTrash"
-                                onClick={() => {
-                                    props.btn()
-                                }}>
+                            <button type="button" className="btnColorTrash" onClick={(e) => {
+                                props.btnNext(e)
+                            }}>
                                 <i className="fas fa-arrow-right text-white"></i></button>
                         </div>
                         <div className="">

@@ -5,7 +5,7 @@ import '../App.css';
 const ReproductorMusica = () => {
 
     const [state, setState] = useState([]);
-    const [index, setIndex] = useState([3]);
+    const [index, setIndex] = useState(22);
 
     const apiArtist = 'https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=b71047678120f5300ebf4a390e4b3ef1&format=json';
     useEffect(() => {
@@ -32,26 +32,43 @@ const ReproductorMusica = () => {
             })
     }, [])
 
-    const search = (event, seeker) => {
-        event.preventDefault();
-        return fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${seeker}&api_key=5c8e2c09c2a2396e6d24a126d15464fc&format=json`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-            })
-    }
 
 
 
-
-    const next = () => {
+    const next = (e) => {
+        e.preventDefault()
         setIndex(index + 1)
     }
+    const preview = (e) => {
+        e.preventDefault()
+        setIndex(index - 1)
+    }
+
+
+
+    // const search = (event, seeker) => {
+    //     event.preventDefault();
+    //     return fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${seeker}&api_key=5c8e2c09c2a2396e6d24a126d15464fc&format=json`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             return {
+    //                 artist: result.artists.artist.name,
+    //                 image: result.artists.artist.image[4]['#text'],
+    //                 songs: data.toptracks.track
+    //                     .filter(elemSong => elemSong['@attr'].rank <= 10)
+    //                     .map(elemSong => { return { name: elemSong.name, like: elemSong.playcount, url: elemSong.url } })
+    //                     .sort((a, b) => a.like < b.like),
+    //             }
+    //         })
+
+    // }
+
+
 
 
     const a = state.map((elem, i) =>
         < div className="fondito" key={i} >
-            <Artist element={elem} btn={next} buscar={search} />
+            <Artist element={elem} btnNext={next} btnPreview={preview} />
         </div >
     )[index]
 
