@@ -5,7 +5,7 @@ import '../App.css';
 const Artist = (props) => {
     const { artist, songs } = props.element;
 
-    // const [likes, setLikes] = useState(0);
+
     const [seeker, setSeeker] = useState('');
 
 
@@ -14,17 +14,6 @@ const Artist = (props) => {
         setSeeker(e.target.value);
     };
 
-    // useEffect(() => {
-    //     songs.map((song, i) =>
-    //         setLikes(song.like)[i])
-    // })
-
-    // const likesButton = (e) => {
-    //     e.preventDefault()
-    //     console.log('antes', likes)
-    //     setLikes(likes + 1)
-    //     console.log('despues', likes)
-    // }
 
     return (
 

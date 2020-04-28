@@ -4,8 +4,9 @@ import '../App.css';
 
 const ReproductorMusica = () => {
 
-    const [state, setState] = useState([]);
+    const [songs, setSongs] = useState([]);
     const [index, setIndex] = useState(22);
+    const [likes, setLikes] = useState(0);
 
     const apiArtist = 'https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=b71047678120f5300ebf4a390e4b3ef1&format=json';
     useEffect(() => {
@@ -27,7 +28,7 @@ const ReproductorMusica = () => {
                                 .sort((a, b) => a.like < b.like),
                         }
                     })
-                    setState(dataLabSongs)
+                    setSongs(dataLabSongs)
 
                 })
             })
@@ -48,39 +49,33 @@ const ReproductorMusica = () => {
 
     const handleLike = (e, id) => {
         e.preventDefault()
-        console.log('antes', state[index].songs[id].like)
-        console.log('estado', state)
-        state[index].songs[id].like++;
-        setState(state);
-        console.log('estado despues', state)
-        console.log('despues', state[index].songs[id].like)
 
+        const songsCopi = [...songs];
+        songsCopi[index].songs[id].like++;
+        setSongs(songsCopi)
+        // console.log(songs);
 
     }
 
-    // const search = (event, seeker) => {
-    //     event.preventDefault();
-    //     return fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${seeker}&api_key=5c8e2c09c2a2396e6d24a126d15464fc&format=json`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             return {
-    //                 artist: result.artists.artist.name,
-    //                 image: result.artists.artist.image[4]['#text'],
-    //                 songs: data.toptracks.track
-    //                     .filter(elemSong => elemSong['@attr'].rank <= 10)
-    //                     .map(elemSong => { return { name: elemSong.name, like: elemSong.playcount, url: elemSong.url } })
-    //                     .sort((a, b) => a.like < b.like),
-    //             }
-    //         })
 
-    // }
+
+
+    const search = (event, seeker) => {
+        event.preventDefault();
+        return fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${seeker}&api_key=5c8e2c09c2a2396e6d24a126d15464fc&format=json`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('artista', data)
+            })
+
+    }
 
 
 
 
-    const a = state.map((elem, i) =>
+    const a = songs.map((elem, i) =>
         < div className="fondito" key={i} >
-            <Artist element={elem} btnNext={next} btnPreview={preview} likes={handleLike} />
+            <Artist element={elem} btnNext={next} btnPreview={preview} likes={handleLike} buscar={search} />
         </div >
     )[index]
 
