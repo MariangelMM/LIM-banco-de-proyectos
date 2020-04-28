@@ -5,15 +5,26 @@ import '../App.css';
 const Artist = (props) => {
     const { artist, songs } = props.element;
 
-    // console.log(songs)
-
+    // const [likes, setLikes] = useState(0);
     const [seeker, setSeeker] = useState('');
+
+
 
     const searchArtist = (e) => {
         setSeeker(e.target.value);
     };
 
+    // useEffect(() => {
+    //     songs.map((song, i) =>
+    //         setLikes(song.like)[i])
+    // })
 
+    // const likesButton = (e) => {
+    //     e.preventDefault()
+    //     console.log('antes', likes)
+    //     setLikes(likes + 1)
+    //     console.log('despues', likes)
+    // }
 
     return (
 
@@ -28,14 +39,16 @@ const Artist = (props) => {
                     <img className="card-img-top" src={img} alt='artista' />
                     <div className="card-body " >
                         <div className="row justify-content-center">
-                            <button type="button" className="btnColorTrash" onClick={(e) => {
-                                props.btnPreview(e)
-                            }}>
-                                <i className="fas fa-arrow-left text-white"></i> </button>
+                            <button type="button" className="btnColorTrash" onClick={(e) => { props.btnPreview(e) }}>
+                                <i className="fas fa-arrow-left text-white"></i>
+                            </button>
                             <h3 className="text-white">{artist}</h3>
-                            <button type="button" className="btnColorTrash" onClick={(e) => {
-                                props.btnNext(e)
-                            }}>
+                            <button
+                                type="button"
+                                className="btnColorTrash"
+                                onClick={(e) => {
+                                    props.btnNext(e)
+                                }}>
                                 <i className="fas fa-arrow-right text-white"></i></button>
                         </div>
                         <div className="">
@@ -47,7 +60,7 @@ const Artist = (props) => {
                                         type="button"
                                         className="btn btnColorTrash col-sm-1 "
                                         onClick={(e) => {
-
+                                            props.likes(e, i)
                                         }}>
                                         <i className="fas fa-heart text-white"></i>
                                     </button>

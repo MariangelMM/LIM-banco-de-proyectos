@@ -12,12 +12,12 @@ const ReproductorMusica = () => {
         fetch(apiArtist).then(res => res.json())
             .then(result => {
                 Promise.all(result.artists.artist.map(doc => {
-                    // console.log(doc)
+                    //    console.log(doc)
                     return fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${doc.name}&api_key=5c8e2c09c2a2396e6d24a126d15464fc&format=json`)
                         .then(response => response.json())
                 })).then(data => {
                     const dataLabSongs = data.map((elem, i) => {
-                        // console.log(elem.toptracks.track)
+                        //    console.log(elem.toptracks.track)
                         return {
                             artist: result.artists.artist[i].name,
                             image: result.artists.artist[i].image[4]['#text'],
@@ -28,6 +28,7 @@ const ReproductorMusica = () => {
                         }
                     })
                     setState(dataLabSongs)
+
                 })
             })
     }, [])
@@ -45,6 +46,17 @@ const ReproductorMusica = () => {
     }
 
 
+    const handleLike = (e, id) => {
+        e.preventDefault()
+        console.log('antes', state[index].songs[id].like)
+        console.log('estado', state)
+        state[index].songs[id].like++;
+        setState(state);
+        console.log('estado despues', state)
+        console.log('despues', state[index].songs[id].like)
+
+
+    }
 
     // const search = (event, seeker) => {
     //     event.preventDefault();
@@ -68,7 +80,7 @@ const ReproductorMusica = () => {
 
     const a = state.map((elem, i) =>
         < div className="fondito" key={i} >
-            <Artist element={elem} btnNext={next} btnPreview={preview} />
+            <Artist element={elem} btnNext={next} btnPreview={preview} likes={handleLike} />
         </div >
     )[index]
 
