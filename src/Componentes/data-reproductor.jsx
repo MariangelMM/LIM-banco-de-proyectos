@@ -5,7 +5,7 @@ import '../App.css';
 const ReproductorMusica = () => {
 
     const [songs, setSongs] = useState([]);
-    const [index, setIndex] = useState(49);
+    const [index, setIndex] = useState(0);
 
     const apiArtist = 'https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=b71047678120f5300ebf4a390e4b3ef1&format=json';
     useEffect(() => {
@@ -22,7 +22,7 @@ const ReproductorMusica = () => {
                             songs: elem.toptracks.track
                                 .filter(elemSong => elemSong['@attr'].rank <= 10)
                                 .map(elemSong => { return { name: elemSong.name, like: elemSong.playcount, url: elemSong.url } })
-                                .sort((a, b) => a.like > b.like)
+                                .sort((a, b) => b.like - a.like)
                         }
                     })
                     setSongs(dataLabSongs)
@@ -47,7 +47,7 @@ const ReproductorMusica = () => {
                 songs: data.toptracks.track
                     .filter(elemSong => elemSong['@attr'].rank <= 10)
                     .map(elemSong => { return { name: elemSong.name, like: elemSong.playcount, url: elemSong.url } })
-                    .sort((a, b) => a.like > b.like)
+                    .sort((a, b) => b.like - a.like)
             }
             const newArray = [obj];
             const array = newArray.concat(songs)
@@ -60,12 +60,12 @@ const ReproductorMusica = () => {
 
     const next = (e) => {
         e.preventDefault()
-        setIndex(index + 1)
+        index === songs.length - 1 ? setIndex(0) : setIndex(index + 1);
     }
 
     const preview = (e) => {
         e.preventDefault()
-        setIndex(index - 1)
+        index === 0 ? setIndex(songs.length - 1) : setIndex(index - 1);
     }
 
 

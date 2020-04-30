@@ -31,7 +31,7 @@ const Artist = (props) => {
                             <button type="button" className="btnColorTrash" onClick={(e) => { props.btnPreview(e) }}>
                                 <i className="fas fa-arrow-left text-white"></i>
                             </button>
-                            <h3 className="text-white">{artist}</h3>
+                            <h3 className="text-white text-center col-sm-7">{artist}</h3>
                             <button
                                 type="button"
                                 className="btnColorTrash"
