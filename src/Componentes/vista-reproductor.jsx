@@ -58,7 +58,7 @@ const Artist = (props) => {
                                         type="button"
                                         className="btnColorTrash col-sm-1"
                                         onClick={(e) => {
-
+                                            props.nolikes(e, i)
                                         }}>
                                         <i className="fas fa-thumbs-down text-white "></i>
                                     </button>
