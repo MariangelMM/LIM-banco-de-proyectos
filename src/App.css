@@ -1,0 +1,48 @@
+* {
+  background-color: black;
+  background-size: contain;
+}
+
+.style {
+  width: 25rem;
+  background-color: transparent;
+  border: none;
+}
+
+.fondo {
+  background: transparent;
+}
+
+.btnColorTrash {
+  background: transparent;
+  border: none;
+
+  text-align: center;
+}
+
+.width {
+  font-size: 2em;
+}
+
+/* 
+Ivy Feraco10:46
+this.setState({quantity: 2})
+Ivy Feraco10:51
+soungs : []
+songs; []
+songs: []
+const [count, setCount] = useState(0);
+Ivy Feraco10:52
+const [songs, setSongs] = useState([])
+https://reactjs.org/docs/hooks-state.html
+Ivy Feraco10:54
+https://reactjs.org/docs/hooks-state.html
+const [songs, setSongs] = useState([])
+https://reactjs.org/docs/hooks-state.html
+Ivy Feraco11:06
+Object.assigns({}, songs)
+Ivy Feraco11:10
+;
+Ivy Feraco11:12
+https://reactjs.org/docs/react-component.html#setstate
+https://reactjs.org/docs/hooks-state.html */
