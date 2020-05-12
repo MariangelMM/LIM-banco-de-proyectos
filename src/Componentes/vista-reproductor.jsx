@@ -26,8 +26,6 @@ const Artist = (props) => {
                 </div>
                 <div className="card style">
                     <img className="card-img-top" src={img} alt='artista' />
-                    <button type="button" onClick={(e) => { props.btn(e) }}>
-                    </button>
                     <div className="card-body " >
                         <div className="row justify-content-center">
                             <button type="button" className="btnColorTrash" onClick={(e) => { props.btnPreview(e) }}>
