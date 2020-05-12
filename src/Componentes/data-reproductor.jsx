@@ -85,10 +85,19 @@ const ReproductorMusica = () => {
         // console.log(songs);
     }
 
+    const ascendente = (e) => {
+        e.preventDefault()
+        const songsCopi = [...songs]
+        // console.log(songsCopi)
+        const hola = (songsCopi.songs.like).sort((a, b) => a.like - b.like)
+        // setSongs(songsCopi)
+        console.log(hola);
+    }
+
 
     const a = songs.map((elem, i) =>
         < div className="fondito" key={i} >
-            <Artist element={elem} btnNext={next} btnPreview={preview} likes={handleLike} buscar={seeker} nolikes={notLike} />
+            <Artist element={elem} btnNext={next} btnPreview={preview} likes={handleLike} buscar={seeker} nolikes={notLike} btn={ascendente} />
         </div >
     )[index]
 

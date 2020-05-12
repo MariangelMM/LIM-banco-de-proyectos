@@ -20,12 +20,14 @@ const Artist = (props) => {
         <div key={artist} className="d-flex justify-content-center">
             <div className="">
                 <div className="row m-2 justify-content-center">
-                    <input className="form-control col-sm-9 " type="text" onChange={searchArtist} placeholder="escribe aqui" />
+                    <input className="form-control col-sm-9 " type="text" onChange={searchArtist} placeholder="Nombre Artista" />
                     <button className="btn btn-outline-danger col-sm-2 ml-3 mb-3" onClick={(event) => { props.buscar(event, seeker) }} type="submit"><i className="fas fa-search"></i></button>
 
                 </div>
                 <div className="card style">
                     <img className="card-img-top" src={img} alt='artista' />
+                    <button type="button" onClick={(e) => { props.btn(e) }}>
+                    </button>
                     <div className="card-body " >
                         <div className="row justify-content-center">
                             <button type="button" className="btnColorTrash" onClick={(e) => { props.btnPreview(e) }}>
