@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/eMusic/static/css/main.f72e8ef2.chunk.css",
+    "main.js": "/eMusic/static/js/main.4652c951.chunk.js",
+    "main.js.map": "/eMusic/static/js/main.4652c951.chunk.js.map",
+    "runtime-main.js": "/eMusic/static/js/runtime-main.bfe74dba.js",
+    "runtime-main.js.map": "/eMusic/static/js/runtime-main.bfe74dba.js.map",
+    "static/css/2.89f067aa.chunk.css": "/eMusic/static/css/2.89f067aa.chunk.css",
+    "static/js/2.d10be3ac.chunk.js": "/eMusic/static/js/2.d10be3ac.chunk.js",
+    "static/js/2.d10be3ac.chunk.js.map": "/eMusic/static/js/2.d10be3ac.chunk.js.map",
+    "index.html": "/eMusic/index.html",
+    "precache-manifest.2b29bb05822e61744959c518f0f77990.js": "/eMusic/precache-manifest.2b29bb05822e61744959c518f0f77990.js",
+    "service-worker.js": "/eMusic/service-worker.js",
+    "static/css/2.89f067aa.chunk.css.map": "/eMusic/static/css/2.89f067aa.chunk.css.map",
+    "static/css/main.f72e8ef2.chunk.css.map": "/eMusic/static/css/main.f72e8ef2.chunk.css.map",
+    "static/js/2.d10be3ac.chunk.js.LICENSE.txt": "/eMusic/static/js/2.d10be3ac.chunk.js.LICENSE.txt",
+    "static/media/imagen.jpg": "/eMusic/static/media/imagen.cc590710.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bfe74dba.js",
+    "static/css/2.89f067aa.chunk.css",
+    "static/js/2.d10be3ac.chunk.js",
+    "static/css/main.f72e8ef2.chunk.css",
+    "static/js/main.4652c951.chunk.js"
+  ]
+}
